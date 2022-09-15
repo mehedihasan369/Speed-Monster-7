@@ -7,7 +7,7 @@ const modalBackground = document.getElementById("modal-background");
 
 // variables
 let userText = "";
-let errorCount = 0;
+let errorCount= 0;
 let startTime;
 let questionText = "";
 
@@ -44,8 +44,10 @@ const typeController = (e) => {
 
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
-  } else {
+  }
+   else {
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+    errorCount = errorCount +1 ;
   }
 
   // check if given question text is equal to user typed text
@@ -68,6 +70,8 @@ const gameOver = () => {
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
   const timeTaken = (finishTime - startTime) / 1000;
+
+
 
   // show result modal
   resultModal.innerHTML = "";
