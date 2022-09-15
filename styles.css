@@ -35,11 +35,11 @@ body {
 }
 
 #display {
-  height: 100px;
+  height : auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding-left: 5rem;
+  padding: 2rem;
   color: white;
   font-size: 32px;
   background-color: #171717;
