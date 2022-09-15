@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blogs</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1 class="title"><img src="./logo.png" /></h1>
+
+    <div class="box-container">
+      <div id="question"> <h1>Featured blogs</h1>
+                           
+                                </div>
+
+      
+      <div class="divider-container">
+        <div class="line"></div>
+        <p class="title2">
+        </p>
+        <div class="line"></div>
+      </div>
+
+      <div id="histories2">
+        <div class="card">
+            <h3>What is the difference between local storage and session storage?
+            </h3>
+            <div class="line"></div>
+            <p>localStorage and sessionStorage are relatively new APIs (meaning, not all legacy browsers will support them) and are near identical (both in APIs and capabilities) with the sole exception of persistence. sessionStorage (as the name suggests) is only available for the duration of the browser session (and is deleted when the tab or window is closed) - it does, however, survive page reloads 
+
+                Clearly, if the data you are storing needs to be available on an ongoing basis then localStorage is preferable to sessionStorage - although you should note both can be cleared by the user so you should not rely on the continuing existence of data in either case.
+                
+                localStorage and sessionStorage are perfect for persisting non-sensitive data needed within client scripts between pages (for example: preferences, scores in games). The data stored in localStorage and sessionStorage can easily be read or changed from within the client/browser so should not be relied upon for storage of sensitive or security-related data within applications.</p>
+        </div>
+        <div class="card">
+            <h3>Difference between Globalscope and  Blockscope 
+            </h3>
+            <div class="line"></div>
+            
+            <p> <strong>Block Scope</strong><br>
+                Before ES6 (2015), JavaScript had only Global Scope and Function Scope.<br>
+                
+                ES6 introduced two important new JavaScript keywords: let and const.
+                
+                These two keywords provide Block Scope in JavaScript. <br>
+                
+                Variables declared inside a { } block cannot be accessed from outside the block:<br>
+                
+                Example<br>
+                {<br>
+                  let x = 2;<br>
+                }<br>
+                // x can NOT be used here<br>
+                Variables declared with the var keyword can NOT have block scope.<br>
+                
+                Variables declared inside a { } block can be accessed from outside the block.
+                
+                Example<br>
+                {<br>
+                  var x = 2;<br>
+                }<br>
+                // x CAN be used here<br>
+
+                <strong>Global Scope</strong> <br>
+                   Variables declared Globally (outside any function) have Global Scope.
+
+                   Global variables can be accessed from anywhere in a JavaScript program.
+                   
+                   Variables declared with var, let and const are quite similar when declared outside a block.
+                   
+                   They all have Global Scope:<br>
+                   
+                   var x = 2;       // Global scope<br>
+                   let x = 2;       // Global scope<br>
+                   const x = 2;       // Global scope<br>
+                   
+            </p>
+                
+        </div>
+        <div class="card">
+            <h3>How does the Event Loop works in JavaScript?</h3>
+            <div class="line"></div>
+            <p>The event loop is the secret behind JavaScript’s asynchronous programming. JS executes all operations on a single thread, but using a few smart data structures, it gives us the illusion of multi-threading. Let’s take a look at what happens on the back-end. <br>
+
+
+
+The call stack is responsible for keeping track of all the operations in line to be executed. Whenever a function is finished, it is popped from the stack.<br><br>
+
+The event queue is responsible for sending new functions to the stack for processing. It follows the queue data structure to maintain the correct sequence in which all operations should be sent for execution.<br><br>
+
+Whenever an async function is called, it is sent to a browser API. These are APIs built into the browser. Based on the command received from the call stack, the API starts its own single-threaded operation.<br><br>
+
+An example of this is the setTimeout method. When a setTimeout operation is processed in the stack, it is sent to the corresponding API which waits till the specified time to send this operation back in for processing.<br> <br>
+
+Where does it send the operation? The event queue. Hence, we have a cyclic system for running async operations in JavaScript. The language itself is single-threaded, but the browser APIs act as separate threads.<br><br>
+
+The event loop facilitates this process; it constantly checks whether or not the call stack is empty. If it is empty, new functions are added from the event queue. If it is not, then the current function call is processed.</p>
+        </div>
+        <div class="card">
+            <h3>How can I check for "undefined" in JavaScript? </h3>
+            <div class="line"></div>
+            <p>If you are interested in finding out whether a variable has been declared regardless of its value, then using the in operator is the safest way to go. Consider this example: <br>  <br>
+
+                // global scope
+                var theFu; // theFu has been declared, but its value is undefined
+                typeof theFu; // "undefined"
+                But this may not be the intended result for some cases, since the variable or property was declared but just not initialized. Use the in operator for a more robust check. <br>  <br>
+                
+                "theFu" in window; // true  <br>
+                "theFoo" in window; // false <br>
+                If you are interested in knowing whether the variable hasn't been declared or has the value undefined, then use the typeof operator, which is guaranteed to return a string: <br>  <br>
+                
+                if (typeof myVar !== 'undefined')<br>
+                Direct comparisons against undefined are troublesome as undefined can be overwritten. <br>  <br>
+                
+                window.undefined = "foo";
+                "foo" == undefined // true
+                As @CMS pointed out, this has been patched in ECMAScript 5th ed., and undefined is non-writable. <br>  <br>
+                
+                if (window.myVar)<br> will also include these falsy values, so it's not very robust: <br>  <br>
+                
+                false<br>
+                0<br>
+                ""<br>
+                NaN<br>
+                null<br>
+                undefined<br>
+                Thanks to @CMS for pointing out that your third case - if (myVariable) can also throw an error in two cases. The first is when the variable hasn't been defined which throws a ReferenceError. <br>  <br>
+                
+                // abc was never declared.
+                if (abc) {<br>
+                    // ReferenceError: abc is not defined<br>
+                }  <br>  <br>
+                The other case is when the variable has been defined, but has a getter function which throws an error when invoked. For example, <br>  <br>
+                
+                // or it's a property that can throw an error
+                Object.defineProperty(window, "myVariable", { 
+                    get: function() { throw new Error("W00t?"); }, 
+                    set: undefined 
+                });<br>
+                if (myVariable) {<br>
+                    // Error: W00t?<br>
+                }</p>
+        </div>
+
+
+        
+
+        
+      </div>
+      
+
+      
+    </div>
+
+    
+  </body>
+</html>
