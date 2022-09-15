@@ -194,3 +194,15 @@ button {
     flex-direction: column;
   }
 }
+
+/* mobile responsive */
+
+@media only screen and (max-width: 600px) {
+  #histories {
+    display: flex;
+    flex-direction: column;
+  
+  
+  }
+  
+}
